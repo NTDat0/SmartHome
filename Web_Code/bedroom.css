@@ -1,0 +1,513 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    display: flex;
+    background: #4b79a1; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4b79a1, #283e51); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4b79a1, #283e51); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.sidebar {
+    padding-top: 20px;
+    width: 250px;
+    background: linear-gradient(135deg, #232526, #414345);
+    height: 100vh;
+    position: fixed;
+    color: white;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    transition: width 0.3s ease;
+}
+
+.sidebar:hover {
+    width: 270px;
+}
+
+.sidebar h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0 15px;
+}
+
+.sidebar ul li {
+    margin: 20px 0;
+    font-weight: bold;
+    transition: background-color 0.3s ease, padding-left 0.3s ease;
+    border-radius: 4px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    display: block;
+    padding: 10px;
+}
+
+.sidebar ul li:hover {
+    background-color: #5cdb95;
+    padding-left: 10px;
+    box-shadow: inset 5px 0 0 #05386b;
+}
+
+.content {
+    margin-left: 270px;
+    padding: 0px;
+    width: 100%;
+    transition: margin-left 0.3s ease;
+}
+
+.room-content {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.room-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+/*----------------Bedroom-------------------*/
+#bedroom.room-content{
+    display: grid;
+    grid-template-columns: auto 28%;
+}
+/*------------------main bedroom------------*/
+.boxleft{
+    display: grid;
+    grid-template-rows: 30% 70%;
+    height: 100vh;
+}
+.maintop{
+    display:grid;
+    grid-template-columns: 50% 50%;
+
+}
+.mainbottom{
+    display:grid;
+    grid-template-columns: 70% 30%;
+   
+}
+.tempbox{
+    display: flex;
+    align-items: center;
+    padding-left: 14px;
+}
+.humibox{
+    display: flex;
+    align-items: center;
+    padding-left: 14px;
+}
+.mainbottomleft{
+    display:grid;
+    grid-template-rows: 30% 70%;
+
+}
+.mainbottomright{
+    padding-left: 10px;
+    padding-top: 6px;
+}
+.mainbottomleft-top{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.dashboardchart{
+    display: flex;
+    padding-top: 15px;
+    padding-left: 14px;
+}
+/*Temperature Bedroom*/
+.cardTempBed {
+    background-color: #ffffff;
+    border: 5px solid black;
+    border-radius: 25px;
+    padding: 15px;
+    width: 96%;
+    height: 87%;
+    text-align: left;
+    position: relative;
+}
+.headerTempBed {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.headerTempBed span {
+    font-size: 40px;
+    
+}
+.temperatureBed {
+    font-size: 50px;
+    font-weight: bold;
+    text-align: left;
+    width: 170px;
+    margin: 25px; display: inline-block; vertical-align: middle;
+}
+.image-containerTemp {
+    overflow: hidden;
+    position: absolute;
+    bottom: 25px; /* Đặt vị trí từ dưới lên */
+    right: 40px; /* Đặt vị trí từ trái sang */
+    width: 125px; /* Chiều rộng của hình ảnh */
+    height: auto; /* Chiều cao tự động theo tỷ lệ */
+}
+.image-containerTemp img {
+    width: 100%;
+    height: auto;
+}
+/*Humidity Bedroom*/
+.cardHumiBed {
+    background-color: #ffffff;
+    border: 5px solid black;
+    border-radius: 25px;
+    padding: 15px;
+    width: 96%;
+    height: 87%;
+    text-align: left;
+    position: relative;
+}
+.headerHumiBed {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.headerHumiBed span {
+    font-size: 40px;
+    
+}
+.HumidityBed {
+    font-size: 50px;
+    font-weight: bold;
+    text-align: left;
+    width: 170px;
+    margin: 25px; display: inline-block; vertical-align: middle;
+}
+.image-containerHumi {
+    overflow: hidden;
+    position: absolute;
+    bottom: 15px; /* Đặt vị trí từ dưới lên */
+    right: 35px; /* Đặt vị trí từ trái sang */
+    width: 200px; /* Chiều rộng của hình ảnh */
+    height: auto; /* Chiều cao tự động theo tỷ lệ */
+}
+.image-containerHumi img {
+    width: 200px;
+    height: auto;
+}
+/*-------------AQI---------------------*/
+.cardAQIBed {
+    background-color: #ffffff;
+    border: 5px solid black;
+    border-radius: 25px;
+    padding: 15px;
+    width: 92.9%;
+    height: 93.98%;
+    text-align: left;
+    position: relative;
+}
+.headerAQIBed{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.headerAQIBed span{
+    font-size: 45px;
+}
+.image-containerAQI {
+    border: 3px solid black;
+    border-radius: 15px;
+    overflow: hidden;
+    position: absolute;
+    text-align: center;
+    top: 180px; /* Đặt vị trí từ dưới lên */
+    right: 15px; /* Đặt vị trí từ trái sang */
+    width: 200px; /* Chiều rộng của hình ảnh */
+    height: auto; /* Chiều cao tự động theo tỷ lệ */
+}
+.image-containerAQI p{
+    font-size: 45px;
+}
+    
+
+.image-containerAQI img {
+    width: 160px;
+    height: auto;
+}
+.AirqualityBed {
+    font-size: 70px;
+    font-weight: bold;
+    text-align: center;
+    width: 170px;
+    margin: 25px; display: inline-block; vertical-align: middle;
+}
+
+/*--------------Main bottom left--------*/
+.COBox{
+    display: flex;
+    align-items: center;
+    padding-left: 14px;
+
+
+}
+.ClockBox{
+    display: flex;
+    align-items: center;
+    padding-left:14px;
+  
+}
+/*---------------Chart Options--------------*/
+.CO-detection{
+    background-color: #ffffff;
+    border: 5px solid black;
+    border-radius: 25px;
+    padding: 15px;
+    width: 92.72%;
+    height: 91.377%;
+    text-align: left;
+    position: relative;
+}
+.headerCOBed{
+    display: flex;
+    
+}
+.headerCOBed span{
+    font-size: 30px;
+}
+.button-container-bedroom {
+    margin-bottom: 10px;
+    width: 90.25%;
+    height: auto;
+    display: flex;
+    position: absolute;
+    bottom: 10px;
+    right: 14px;
+    align-items: center;
+    justify-content: center;
+}
+.button-container-bedroom button {
+    background-color: #0d3072;
+    padding: 10px 12px;
+    margin: 0 10px;
+    font-size: 15px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+/*-----------clock bedroom--------------------*/
+.ClockTimeBedroom{
+    background-color: #ffffff;
+    border: 5px solid black;
+    border-radius: 25px;
+    padding: 15px;
+    width: 92.72%;
+    height: 91.377%;
+    text-align: left;
+    position: relative;
+}
+.headerTimeBed{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.headerTimeBed span{
+    font-size: 30px;
+}
+#ClockBedroom {
+    position: absolute;
+    bottom:0px;
+    right:50px;
+    font-size: 70px;
+    font-weight: bold;
+    color: #333;
+}
+/*----------------Dashboard-Bedroom-----*/
+
+.Dashchartbox{
+    background-color: #ffffff;
+    border: 5px solid black;
+    border-radius: 25px;
+    padding: 15px;
+    width: 96%;
+    height: 88.95%;
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content-chart-bedroom {
+    
+    font-size: 18px;
+}
+
+/*------bedroom: device control--------*/
+.grid-container {
+    /*width: 350px*/
+    width: 100%;
+    height: 100vh;
+    background-color: #ffffff; /* Màu xanh lá */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Căn giữa theo chiều dọc */
+    align-items: center; /* Căn giữa theo chiều ngang */
+    /*position: absolute;*/
+    /*right: 0px;*/
+}
+.infouser {
+    /*width: 330px;*/
+    width: 94.28%;
+    margin: 20px;
+    margin-top: 40px;
+    margin-right: 0px;
+    display: flex;
+    align-items: flex-start; /* Căn giữa hình ảnh và văn bản theo chiều dọc */
+    position: relative;
+}
+
+.imguser img {
+    /*margin-left: 20px;*/
+    width: 30%;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.nameuser {
+    margin-top: 2px;
+    margin-left: 15px; /* Tạo khoảng cách giữa ảnh và văn bản */
+    display: flex;
+    flex-direction: column; /* Đảm bảo các phần tử bên trong xếp theo cột (tức là xuống hàng) */
+    justify-content: center; /* Căn giữa dọc cho văn bản */
+}
+
+.nameuser p {
+    font-size: 22px; /* Giảm kích thước font của dòng "TeamJery" để phù hợp */
+    font-weight: bold;
+    margin-top: 1px;
+    margin: 0; /* Loại bỏ margin để tránh nhảy lung tung */
+}
+
+#Device {
+    font-size: 12px;
+    font-weight: normal;
+     /* Đảm bảo không có khoảng cách thừa giữa hai dòng chữ */
+}
+.divideruser {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.5); /* Đường kẻ mờ mờ */
+    margin: 0; /* Khoảng cách trên và dưới đường kẻ */
+    width: 100%; /* Độ dài của đường kẻ */
+}
+.headerdevice{
+    /*width: 330px;*/
+    width:94.28%;
+    margin: 10px;
+    margin-right: 0px;
+    margin-left: 20px;
+    display: flex;
+    align-items: flex-start;
+    padding: 0px;
+    
+    
+}
+.headerdevice p{
+    font-size: 30px;
+    font-weight: bold;
+    margin: 10px;
+    margin-bottom: 0px;
+
+}
+.dividercontrol {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.2); /* Đường kẻ mờ mờ */
+    margin: 0; /* Khoảng cách trên và dưới đường kẻ */
+    width: 90%; /* Độ dài của đường kẻ */
+}
+/* Định dạng cho các container của switch */
+.container-bedroom {
+    /*width: 300px;*/
+    width: 80%;
+    height: 80px;
+    background-color: #5493e6; /* Màu nền mặc định khi bật */
+    display: flex;
+    border-radius: 15px;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: space-between; /* Căn chữ và switch cách nhau */
+    padding: 0 15px; /* Thêm khoảng cách giữa viền và nội dung */
+    box-sizing: border-box;
+    transition: background-color 0.4s;
+    margin-bottom: 18px; /* Khoảng cách giữa các nút */
+    margin-top: 18px;
+}
+
+.headercontrol {
+    font-size: 20px;
+    color: white;
+}
+
+/* CSS cho switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #3b58c0;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+/*---------------end bedroom----------*/

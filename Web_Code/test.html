@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smarthome</title>
+    <link rel="stylesheet" href="kitchen.css">
+    <link rel="stylesheet" href="livingroom.css">
+    <link rel="stylesheet" href="bedroom.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>List of rooms</h2>
+        <ul>
+            <li><a href="#bedroom" onclick="showContent('bedroom')">Bedroom</a></li>
+            <li><a href="#livingroom" onclick="showContent('livingroom')">Livingroom</a></li>
+            <li><a href="#kitchen" onclick="showContent('kitchen')">Kitchen</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div id="bedroom" class="room-content">
+            <section class="boxleft">
+                <section class="maintop">
+                    <section class="tempbox"><!--Temperature Bedroom-->
+                        <div class="cardTempBed">
+                            <div class="headerTempBed">
+                                <span><u>Temperature</u></span>
+                                <span class="material-symbols-outlined">
+                                    thermostat
+                                    </span>
+                            </div>
+                            <div class="temperatureBed">
+                                <span id="temp-value"></span><span>℃</span>
+                            </div>
+                            <div class="image-containerTemp">
+                                <img id="display-imageTemp" src="imagebedroom/Greentemp.png" alt="Hình Ảnh">
+                            </div>
+                        </div>
+                    </section>
+                    <section class="humibox"><!--Humidity Bedroom-->
+                        <div class="cardHumiBed">
+                            <div class="headerHumiBed">
+                                <span><u>Humidity</u></span>
+                                <span class="material-symbols-outlined">
+                                    humidity_mid
+                                </span>
+                            </div>
+                            <div class="HumidityBed">
+                                <span id="humi-value"></span><span>%</span>
+                            </div>
+                            <div class="image-containerHumi">
+                                <img id="display-imageHumi" src="imagebedroom/normal.png" alt="Hình Ảnh">
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                <section class="mainbottom">
+                    <section class="mainbottomleft">
+                        <section class="mainbottomleft-top">
+                            <section class="COBox"><!--Chart-selection-------------------------->
+                                <div class="CO-detection">
+                                    <div class="headerCOBed">
+                                        <span><u>Chart-option</u></span>
+                                    </div>
+                                    <div class="button-container-bedroom">
+                                        <button onclick="toggleContent('temp-chart')">Temp </button>
+                                        <button onclick="toggleContent('humi-chart')">Humid</button>
+                                        <button onclick="toggleContent('AQI-chart')"> AQI </button>
+                                    </div>
+                                </div>
+                            </section>
+                            <section class="ClockBox">
+                                <div class="ClockTimeBedroom">
+                                    <div class="headerTimeBed">
+                                        <span><u>Current-Time </u></span>
+                                        <span class="material-symbols-outlined">
+                                            schedule
+                                        </span>
+                                        <h1 id="ClockBedroom"></h1>
+                                    </div>
+                                </div>
+                            </section>
+                        </section>
+                        <section class="dashboardchart">
+                            <div class="Dashchartbox">
+                                <div id="temp-chart" class="content-chart-bedroom">
+                                    <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2707030/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Gi%C3%A1m+s%C3%A1t+nhi%E1%BB%87t+%C4%91%E1%BB%99+theo+th%E1%BB%9Di+gian+th%E1%BB%B1c&type=line"></iframe>
+                                </div>
+                                <div id="humi-chart" class="content-chart-bedroom" style="display: none;">
+                                    <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2707030/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Gi%C3%A1m+s%C3%A1t+%C4%91%E1%BB%99+%E1%BA%A9m+theo+th%E1%BB%9Di+gian+th%E1%BB%B1c&type=line"></iframe>
+                                </div>
+                                <div id="AQI-chart" class="content-chart-bedroom" style="display: none;">
+                                    <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2707030/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Gi%C3%A1m+s%C3%A1t+AQI+theo+th%E1%BB%9Di+gian+th%E1%BB%B1c&type=line"></iframe>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+                    <section class="mainbottomright"><!--AQI Bedroom-->
+                        <div class="cardAQIBed">
+                            <div class="headerAQIBed">
+                                <span><u>AirQuality</u></span>
+                            </div>
+                            <div class="AirqualityBed">
+                                <span id="AQI-value"></span>
+                            </div>
+                            <div class="image-containerAQI">
+                                <img id="display-imageAQI" src="imagebedroom/GoodAir.png" alt="Hình Ảnh">
+                                <p id="display-statusAQI"></p>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+            </section>
+            <div class="boxright">
+                <div class="grid-container">
+                    <div class="infouser">
+                        <div class="imguser">
+                            <img src="imagebedroom/image (1).png" alt="jerry">
+                        </div>
+                        <div class="nameuser">
+                            <p >TeamJerry</p>
+                            <p id="Device">4 devices</p>
+                        </div>
+                    </div>
+                    <hr class="divideruser">
+                    <div class="headerdevice">
+                        <p><u>Device</u></p>   
+                    </div>
+                    <div class="container-bedroom" id="container1">
+                        <div class="headercontrol">TV</div>
+                        <label class="switch">
+                            <input type="checkbox" id="TV">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <hr class="dividercontrol">
+                    <div class="container-bedroom" id="container2">
+                        <div class="headercontrol">AC</div>
+                        <label class="switch">
+                            <input type="checkbox" id="AC">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <hr class="dividercontrol">
+                    <div class="container-bedroom" id="container3">
+                        <div class="headercontrol">Light</div>
+                        <label class="switch">
+                            <input type="checkbox" id="light">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <hr class="dividercontrol">
+                    <div class="container-bedroom" id="container4">
+                        <div class="headercontrol">Fan</div>
+                        <label class="switch">
+                            <input type="checkbox" id="fan">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="livingroom" class="room-content">
+            <div class="main-livingroom">
+                <div class="main-top-livingroom">
+                    <div class="top1">
+                        <div class="temp">
+                            <div class="left">
+                                <h3>Temp:</h3>
+                                <h2 id="temp-livingroom">100°C</h2>
+                            </div>
+                            <div class="propress">
+                                <img src="img/nhietdovua.png" id="check-temp-livingroom">
+                            </div>
+                        </div>
+                        <div class="humidity">
+                            <div class="left">
+                                <h3>Humidity:</h3>
+                                <h2 id="humidity-livingroom">100%</h2>
+                            </div>
+                            <div class="propress">
+                                <img src="img/humidity-low.png" id="check-humidity-livingroom">
+                                <h3 id="namehumi-livingroom">Low</h3>
+                            </div>
+                        </div>
+                        <div class="air">
+                            <div  class="left">
+                                <h3>AQI:</h3>
+                                <h2 id="aqi-livingroom">250</h2>
+                            </div>
+                            <div class="propress">
+                                <img src="img/AQI-50.png" id="check-aqi-livingroom">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top2">
+                        <div class="top2-left">
+                            <div class="top">
+                                <span class="material-symbols-outlined">chart_data</span>
+                                <p><b>Chart-option:</b></p>
+                            </div>
+                            <div class="bot">
+                                <div class="btn">
+                                    <input id='btn1-livingroom' type="radio" name="chart-livingroom" value="temp-livingroom" onclick="showChart('templivingroom')" class="toggle" checked>
+                                    <label for="btn1-livingroom"><b>Nhiệt độ</b></label>
+                            
+                                    <input id='btn2-livingroom' type="radio" name="chart-livingroom" value="humidity-livingroom" onclick="showChart('humiditylivingroom')" class="toggle">
+                                    <label for="btn2-livingroom"><b>Độ ẩm</b></label>
+                            
+                                    <input id='btn3-livingroom' type="radio" name="chart-livingroom" value="aqi-livingroom" onclick="showChart('aqilivingroom')" class="toggle">
+                                    <label for="btn3-livingroom"><b>AQI</b></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="top2-center">
+                            <div class="top">
+                                <span class="material-symbols-outlined">calendar_month</span>
+                                <p><b>Current day and time:</b><p>
+                            </div>
+                            <h3 id="time-livingroom"></h3>
+                            <h3 id="day-livingroom"></h3>
+                        </div>
+                        <div class="top2-right">
+                            <div class="top">
+                                <span class="material-symbols-outlined">outdoor_garden</span>
+                                <p><b>Outdoor status:</b><p></p>
+                            </div>
+                            <h3 id="weather-livingroom">Rain<h3>
+                            <div class="bot">
+                                <img src="img/sun.gif" id="check-weather-livingroom">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-bottom">
+                    <div class="contain-livingroom">
+                        <div id="temp_chart_div_livingroom" style="height: 100%; width: 100%; border: 5px solid black; border-radius: 25px; overflow: hidden;"></div>
+                        <div id="humidity_chart_div_livingroom" style="height: 100%; width: 100%; border: 5px solid black; border-radius: 25px; overflow: hidden;"></div>
+                        <div id="aqi_chart_div_livingroom" style="height: 100%; width: 100%; border: 5px solid black; border-radius: 25px; overflow: hidden;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="side">
+                <h1>Device</h1>
+                <div class="air-condition">
+                    <img src="img/air-condition.png " id="air-livingroom">
+                    <h3 id="nameair-livingroom">Disconnected</h3>
+                    <div class="container">
+                        <input type="checkbox" id="check-air-livingroom">
+                        <label for="check-air-livingroom" class="button"></label>
+                    </div>
+                </div>
+                <div class="TV">
+                    <img src="img/television.png" id="tv-livingroom">
+                    <h3 id="nametv-livingroom">Disconnected</h3>
+                    <div class="container">
+                        <input type="checkbox" id="check-tv-livingroom">
+                        <label for="check-tv-livingroom" class="button"></label>
+                    </div>
+                </div>
+                <div class="light">
+                    <img src="img/light.png" id="light-livingroom">
+                    <h3 id="namelight-livingroom">Disconnected</h3>
+                    <div class="container">
+                        <input type="checkbox" id="check-light-livingroom">
+                        <label for="check-light-livingroom" class="button"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="kitchen" class="room-content" style="display:none;">
+            <div class="kitchen-parameter">
+                <div class="gas_frame">
+                    <div class="gas_layer1">
+                        <div class="gas_layer2">
+                            <div class="gas_title"><p>Gas concentration</p></div>
+                            <div class="gas_number"><span id="gas_var"></span></div>
+                            <div class="gas_status"><p></p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="kitchen-right">
+                    <div class="TempClock">
+                        <div class="nameTemp">
+                            <h4>Temp:</h4>
+                        </div>
+                        <div class="info">
+                            <h5><span id="KTTemperature"></span>℃</h5>
+                        </div>
+                        <div class="Tempimg">
+                            <img id="anhthoitiet" src="images/hot.png" alt="hot" width="50" height="100">
+                        </div>
+                    </div>
+                    <div class="humidity-card">
+                        <div class="humidity-left">
+                            <h2 class="humidity-title">Humidity</h2>
+                            <img src="images/wet.png" alt="Humidity Icon" class="humidity-icon">
+                        </div>
+                        <div class="humidity-right">
+                            <span class="humidity-value" id="KThumidity"></span>
+                            <span class="humidity-unit">%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="kitchen-device">
+                    <div class="Mydevice">
+                        <div class="title">
+                            <h6>My deivce</h6>
+                        </div>
+                        <div class="devicelist">
+                            <div class="AC" id="AC_kitchen"><img src="images/AC.png" class="icon1" ></div>
+                            <div class="Lamp" id="Lamp_kitchen"><img src="images/lamp.png" class="icon1" ></div>
+                            <div class="refrigerator"  id="Refrigerator_kitchen"><img src="images/refrigerator.png" class="icon1"></div>
+                            <div class="fan" id="Fan_kitchen"><img src="images/fan.png" class="icon1" ></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="energy-cs">
+                    <h2>Energy Compsumtion</h2>
+                    <div class="energy-nb">
+                        <span id="kt-energy"></span>
+                    </div>
+                    <div class="energy-unit">
+                        <h1>kW</h1>
+                    </div>
+                </div>
+                <div id="KitchenChart" class="ktchart" ></div>
+                <script type="text/javascript">
+                    google.charts.load('current', {'packages':['corechart']});
+                    google.charts.setOnLoadCallback(drawChart); 
+                </script>
+            </div>   
+        </div>
+        
+    </div>  
+    <script src="test.js"></script>
+
+</body>
+
+</html>

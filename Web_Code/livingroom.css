@@ -1,0 +1,500 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    display: flex;
+    background: #4b79a1; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4b79a1, #283e51); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4b79a1, #283e51); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.sidebar {
+    padding-top: 20px;
+    width: 250px;
+    background: linear-gradient(135deg, #232526, #414345);
+    height: 100vh;
+    position: fixed;
+    color: white;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    transition: width 0.3s ease;
+}
+
+.sidebar:hover {
+    width: 270px;
+}
+
+.sidebar h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0 15px;
+}
+
+.sidebar ul li {
+    margin: 20px 0;
+    font-weight: bold;
+    transition: background-color 0.3s ease, padding-left 0.3s ease;
+    border-radius: 4px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    display: block;
+    padding: 10px;
+}
+
+.sidebar ul li:hover {
+    background-color: #5cdb95;
+    padding-left: 10px;
+    box-shadow: inset 5px 0 0 #05386b;
+}
+
+.content {
+    margin-left: 270px;
+    padding-left: 20px;
+    width: 100%;
+    transition: margin-left 0.3s ease;
+}
+
+.room-content {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.room-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ---------------livingroom---------------*/
+h1{
+    font-weight: 800;
+}
+
+h2{
+    font-weight: 800;
+}
+
+h3{
+    font-weight: 800;
+}
+
+h4{
+    font-weight: 800;
+}
+#livingroom{
+   display: grid;
+   grid-template-columns: 60% 40%; 
+   height: 100vh;
+   user-select: none;
+   
+}
+
+#livingroom .main-livingroom{
+    display: grid;
+    grid-template-rows: 50% 50%;
+}
+
+#livingroom .main-livingroom .main-top-livingroom{
+    display: grid;
+    grid-template-rows: 50% 50%;
+}
+
+#livingroom .main-livingroom .main-top-livingroom .top1{
+    display: grid;
+    grid-template-columns: 33% 33% 34%;
+}
+
+#livingroom .main-livingroom .main-top-livingroom .top1 .temp{
+    border: 5px solid black;
+    border-radius: 25px;
+    position: relative;
+    display: grid;
+    grid-template-columns:50% 50%;
+    background: white;
+    padding: 15px;
+    margin: 5px;
+}
+
+#livingroom .main-livingroom .main-top-livingroom .top1 .temp .left{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+#livingroom .main-livingroom .main-top-livingroom .top1 .temp .propress {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#livingroom .main-livingroom .main-top-livingroom .top1 .temp .propress img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#livingroom .main-livingroom .main-top-livingroom .top1 .humidity{
+    border: 5px solid black;
+    border-radius: 25px;
+    position: relative;
+    display: grid;
+    grid-template-columns:50% 50%;
+    background: white;
+    padding: 15px;
+    margin: 5px;
+}
+
+#livingroom .main-livingroom .main-top-livingroom .top1 .humidity .left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+#livingroom .main-livingroom .main-top-livingroom .top1 .humidity .propress{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#livingroom .main-livingroom .main-top-livingroom .top1 .humidity .propress img{
+    width: 50%;
+}
+
+#livingroom .main-livingroom .main-top-livingroom .top1 .air{
+    border: 5px solid black;
+    border-radius: 25px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    background: white;
+    padding: 15px;
+    margin: 5px;
+}
+
+#livingroom .main-livingroom .main-top-livingroom .top1 .air .left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#livingroom .main-livingroom .main-top-livingroom .top1 .air .propress{
+    display: flex;
+    align-items: center;
+}
+
+#livingroom .main-livingroom .main-top-livingroom .top1 .air .propress img{
+    width: 100%;
+}
+
+#livingroom .main-livingroom .main-top-livingroom .top2{
+    display: grid;
+    grid-template-columns: 33% 33% 34%;
+}
+
+#livingroom .main-livingroom .main-top-livingroom .top2 .top2-center{
+    border: 5px solid black;
+    border-radius: 25px;
+    padding: 5px;
+    margin: 5px;
+    background-color: white;
+    display: grid;
+}
+
+#livingroom .main-livingroom .main-top-livingroom .top2 .top2-center .top{
+    display: flex;
+}
+
+#livingroom .main-livingroom .main-top-livingroom .top2 .top2-center #day-livingroom{
+    display: flex;
+    justify-content: center;
+}
+
+#livingroom .main-livingroom .main-top-livingroom .top2 .top2-center #time-livingroom{
+    display: flex;
+    justify-content: center;
+}
+
+#livingroom .main-livingroom .main-top-livingroom .top2 .top2-left{
+    border: 5px solid black;
+    border-radius: 25px;
+    margin: 5px;
+    background-color: white;
+    display: grid;
+    grid-template-rows: 20% 80%;
+}
+
+#livingroom .main-livingroom .main-top-livingroom .top2 .top2-left .top{
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+#livingroom .main-livingroom .main-top-livingroom .top2 .top2-left .bot{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+#livingroom .main-livingroom .main-top-livingroom .top2 .top2-left .btn{
+    border: 3px solid black;
+    border-radius: 15px;
+    height: 60%;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap:10px;
+}
+
+#livingroom .main-livingroom .main-top-livingroom .top2 .top2-left .btn > input{
+    display: none;
+}
+
+/* Style cho các label */
+#livingroom .main-livingroom .main-top-livingroom .top2 .top2-left .btn label {
+    height: 100%;
+    width: 90%;
+    background-color: white;
+    color: black;
+    font-size: 12px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#livingroom .main-livingroom .main-top-livingroom .top2 .top2-left .btn .toggle:checked + label {
+    background-color: blue;
+    color: white;
+}
+
+#livingroom .main-livingroom .main-top-livingroom .top2 .top2-right{ 
+    border: 5px solid black;
+    border-radius: 25px;
+    padding: 5px;
+    margin: 5px;
+    background-color: white;
+}
+
+#livingroom .main-livingroom .main-top-livingroom .top2 .top2-right .top{
+    display: flex;
+    align-items: center;
+}
+
+#livingroom .main-livingroom .main-top-livingroom .top2 .top2-right h3{
+    display: flex;
+    justify-content: center;
+}
+
+#livingroom .main-livingroom .main-top-livingroom .top2 .top2-right .bot img{
+    height: 70px;
+    width: 70px;
+    
+}
+#livingroom .main-livingroom .main-top-livingroom .top2 .top2-right .bot{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#livingroom .main-livingroom .main-bottom{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#livingroom .main-livingroom .main-bottom .contain-livingroom{
+    height: 90%;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#livingroom .side{
+    display: grid;
+    grid-template-rows: 1fr 3fr 3fr 3fr;
+    padding: 15px;
+    gap: 15px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+#livingroom .side .air-condition{
+    display: flex;
+    align-items: center;
+    border: 5px solid black;
+    border-radius: 15px;
+    width: 100%;
+    
+}
+
+#livingroom .side .air-condition img{
+    width: 35%;
+}
+
+#livingroom .side .air-condition .container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#livingroom .side .air-condition .container .button{
+    background: #d2d2dd;;
+    width: 100px;
+    height: 50px;
+    border-radius: 100px;
+    cursor: pointer;
+    position: relative;
+    transition: 0.5s;
+}
+
+#livingroom .side .air-condition .container input{
+    display: none;
+}
+
+#livingroom .side .air-condition .container .button::before{
+    position: absolute;
+    content: '';
+    background-color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    margin: 5px;
+    transition: 0.5s;
+}
+
+#livingroom .side .air-condition .container input:checked + .button{
+    background-color: #006ac0;
+}
+
+#livingroom .side .air-condition .container input:checked + .button::before{
+    transform: translateX(50px);
+}
+
+#livingroom .side .TV{
+    display: flex;
+    align-items: center;
+    border: 5px solid black;
+    border-radius: 15px;
+    width: 100%;
+}
+
+#livingroom .side .TV img{
+    width: 35%;
+}
+
+#livingroom .side .TV .container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#livingroom .side .TV .container input{
+    display: none;
+}
+
+#livingroom .side .TV .container .button{
+    background: #d2d2dd;;
+    width: 100px;
+    height: 50px;
+    border-radius: 100px;
+    cursor: pointer;
+    position: relative;
+    transition: 0.5s;
+}
+
+#livingroom .side .TV .container .button::before{
+    position: absolute;
+    content: '';
+    background-color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    margin: 5px;
+    transition: 0.5s;
+}
+
+#livingroom .side .TV .container input:checked + .button{
+    background-color: #006ac0;
+}
+
+#livingroom .side .TV .container input:checked + .button::before{
+    transform: translateX(50px);
+}
+
+
+#livingroom .side .light{
+    display: flex;
+    align-items: center;
+    border: 5px solid black;
+    border-radius: 15px;
+    width: 100%;
+}
+
+#livingroom .side .light img{
+    width: 35%;
+    padding-left: 30px;
+}
+
+#livingroom .side .light .container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#livingroom .side .light .container input{
+    display: none;
+}
+
+#livingroom .side .light .container .button{
+    background: #d2d2dd;;
+    width: 100px;
+    height: 50px;
+    border-radius: 100px;
+    cursor: pointer;
+    position: relative;
+    transition: 0.5s;
+}
+
+#livingroom .side .light .container .button::before{
+    position: absolute;
+    content: '';
+    background-color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    margin: 5px;
+    transition: 0.5s;
+}
+
+#livingroom .side .light .container input:checked + .button{
+    background-color: #006ac0;
+}
+
+#livingroom .side .light .container input:checked + .button::before{
+    transform: translateX(50px);
+}
