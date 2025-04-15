@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smarthome</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="stylelv.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript"></script>
+     <!--Liên kết firebase-->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>List of rooms</h2>
+        <ul>
+            <li><a href="#bedroom" onclick="showContent('bedroom')">Bedroom</a></li>
+            <li><a href="#livingroom" onclick="showContent('livingroom')">Livingroom</a></li>
+            <li><a href="#kitchen" onclick="showContent('kitchen')">Kitchen</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div id="bedroom" class="room-content">
+            <h2>Phòng ngủ</h2>
+            <p>Quản lý các thiết bị trong phòng ngủ.</p>
+        </div>
+
+        <div id="livingroom" class="room-content" >
+            <div class="main-livingroom">
+                <div class="main-top-livingroom">
+                    <div class="top1">
+                        <div class="temp">
+                            <div class="left">
+                                <h3>Temp:</h3>
+                                <h2 id="temp-livingroom">100°C</h2>
+                            </div>
+                            <div class="propress">
+                                <img src="img/nhietdovua.png" id="check-temp-livingroom">
+                            </div>
+                        </div>
+                        <div class="humidity">
+                            <div class="left">
+                                <h3>Humidity:</h3>
+                                <h2 id="humidity-livingroom">100%</h2>
+                            </div>
+                            <div class="propress">
+                                <img src="img/humidity-low.png" id="check-humidity-livingroom">
+                                <h3 id="namehumi-livingroom">Low</h3>
+                            </div>
+                        </div>
+                        <div class="air">
+                            <div  class="left">
+                                <h3>AQI:</h3>
+                                <h2 id="aqi-livingroom">250</h2>
+                            </div>
+                            <div class="propress">
+                                <img src="img/AQI-50.png" id="check-aqi-livingroom">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top2">
+                        <div class="top2-left">
+                            <div class="top">
+                                <span class="material-symbols-outlined">chart_data</span>
+                                <p><b>Chart-option:</b></p>
+                            </div>
+                            <div class="bot">
+                                <div class="btn">
+                                    <input id='btn1-livingroom' type="radio" name="chart" value="temp" onclick="showChart('templivingroom')" class="toggle" checked>
+                                    <label for="btn1-livingroom"><b>Nhiệt độ</b></label>
+                            
+                                    <input id='btn2-livingroom' type="radio" name="chart" value="humidity" onclick="showChart('humiditylivingroom')" class="toggle">
+                                    <label for="btn2-livingroom"><b>Độ ẩm</b></label>
+                            
+                                    <input id='btn3-livingroom' type="radio" name="chart" value="aqi" onclick="showChart('aqilivingroom')" class="toggle">
+                                    <label for="btn3-livingroom"><b>AQI</b></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="top2-center">
+                            <div class="top">
+                                <span class="material-symbols-outlined">calendar_month</span>
+                                <p><b>Current day and time:</b><p>
+                            </div>
+                            <h3 id="time-livingroom"></h3>
+                            <h3 id="day-livingroom"></h3>
+                        </div>
+                        <div class="top2-right">
+                            <div class="top">
+                                <span class="material-symbols-outlined">outdoor_garden</span>
+                                <p><b>Outdoor status:</b><p></p>
+                            </div>
+                            <h3 id="weather-livingroom">Rain<h3>
+                            <div class="bot">
+                                <img src="img/sun.gif" id="check-weather-livingroom">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-bottom">
+                    <div class="contain">
+                        <div id="temp_chart_div_livingroom" style="height: 100%; width: 100%; border: 5px solid black; border-radius: 25px; overflow: hidden;"></div>
+                        <div id="humidity_chart_div_livingroom" style="height: 100%; width: 100%; border: 5px solid black; border-radius: 25px; overflow: hidden;"></div>
+                        <div id="aqi_chart_div_livingroom" style="height: 100%; width: 100%; border: 5px solid black; border-radius: 25px; overflow: hidden;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="side">
+                <h1>Device</h1>
+                <div class="air-condition">
+                    <img src="img/air-condition.png " id="air-livingroom">
+                    <h3 id="nameair-livingroom">Disconnected</h3>
+                    <div class="container">
+                        <input type="checkbox" id="check-air-livingroom">
+                        <label for="check-air-livingroom" class="button"></label>
+                    </div>
+                </div>
+                <div class="TV">
+                    <img src="img/television.png" id="tv-livingroom">
+                    <h3 id="nametv-livingroom">Disconnected</h3>
+                    <div class="container">
+                        <input type="checkbox" id="check-tv-livingroom">
+                        <label for="check-tv-livingroom" class="button"></label>
+                    </div>
+                </div>
+                <div class="light">
+                    <img src="img/light.png" id="light-livingroom">
+                    <h3 id="namelight-livingroom">Disconnected</h3>
+                    <div class="container">
+                        <input type="checkbox" id="check-light-livingroom">
+                        <label for="check-light-livingroom" class="button"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="kitchen" class="room-content" style="display:none;">
+            <h2>Phòng bếp</h2>
+            <p>Quản lý các thiết bị trong phòng bếp.</p>
+        </div>
+    </div>
+
+    <script src="funclv.js"></script>
+</body>
+</html>

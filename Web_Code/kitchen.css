@@ -1,0 +1,336 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    display: flex;
+    background: #4b79a1; 
+    background: -webkit-linear-gradient(to right, #4b79a1, #283e51); 
+    background: linear-gradient(to right, #4b79a1, #283e51); 
+}
+
+.sidebar {
+    padding-top: 20px;
+    width: 250px;
+    background: linear-gradient(135deg, #232526, #414345);
+    height: 100vh;
+    position: fixed;
+    color: white;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    transition: width 0.3s ease;
+}
+
+.sidebar:hover {
+    width: 270px;
+}
+
+.sidebar h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0 15px;
+}
+
+.sidebar ul li {
+    margin: 20px 0;
+    font-weight: bold;
+    transition: background-color 0.3s ease, padding-left 0.3s ease;
+    border-radius: 4px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    display: block;
+    padding: 10px;
+}
+
+.sidebar ul li:hover {
+    background-color: #5cdb95;
+    padding-left: 10px;
+    box-shadow: inset 5px 0 0 #05386b;
+}
+
+.content {
+    margin-left: 270px;
+    padding: 20px;
+    width: 100%;
+    transition: margin-left 0.3s ease;
+}
+
+.room-content {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.room-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+.kitchen-perameter{
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+}
+.kitchen-right {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 600px;
+    top:60px;
+    gap:10px;
+}
+
+.TempClock, .humidity-card {
+    margin-bottom: 20px;
+    width: 100%;
+    }
+/*Kitchen Temp*/
+.TempClock{
+    background: rgb(206, 206, 247);
+    width: 230px;
+    height: 100px;
+    border-radius: 20px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    display: flex;
+    align-items: center;
+}
+.nameTemp
+{
+    padding-top:1px;
+    padding-left:20px;
+    font-size: 20px;}
+.info{
+    padding-left: 20px;
+    font-size:30px;
+}
+.Tempimg{
+    width:50px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*end kitchen temp*/
+/*Humility kitchen*/
+.humidity-card {
+    background: rgb(206, 206, 247);
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    width: 230px;
+    height: 100px;
+    display: flex;
+    justify-content:  space-between;
+    align-items: center;
+}
+.humidity-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.humidity-title {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 5px;
+    margin-top: 0px;
+}
+.humidity-icon {
+    width: 70px;
+    height: 70px;
+}
+.humidity-right {
+    display: flex;
+    align-items: baseline;
+}
+.humidity-value {
+    font-size: 50px;
+    font-weight: bold;
+    color: #333;
+    margin-left: 20px;
+}
+.humidity-unit {
+    font-size: 40px;
+    color: #333;
+    margin-left: 5px;
+}
+/*end humility kitchen*/
+/*gas kitchen*/
+.gas_frame{
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.gas_layer1{
+    width: 280px;
+    height: 280px;
+    background-color: #32c93f;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.gas_layer2{
+    width: 260px;
+    height: 260px;
+    background-color: rgb(255, 255, 255) ;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.gas_status,.gas_title,.gas_number{
+    font-family:'', Times, serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.gas_title{
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    font-weight: 50;
+}
+.gas_number{
+    font-size: 50px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.gas_status {
+    width: 180px;
+    height: 60px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+    overflow: hidden;
+    margin-top: 10px; /* Thêm khoảng cách phía trên */
+}
+.gas_status p {
+    margin: 0;
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*end gas kitchen*/
+
+/* user device*/
+.kitchen-device{
+position: absolute;
+top:10px;
+right: 240px;
+
+}
+.Mydevice{
+    width: 200px;
+    height:300px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-left:25px;
+    border: solid;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.title{
+    text-align: left;
+    margin-bottom: 10px;
+    padding:20px;
+}
+.title h6 {
+    font-size: 16px; /* Điều chỉnh kích thước chữ theo ý muốn */
+    margin: 0; /* Loại bỏ khoảng cách mặc định của h6 */
+}
+.devicelist{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:10px;
+    margin-left: 10px;
+
+}
+.icon1{
+    width: 50px;
+    height: 50px;
+    display: block;
+    margin: auto;
+}
+.AC, .Lamp, .refrigerator, .fan {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    display: flex; /* Sử dụng Flexbox để căn giữa */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    cursor: pointer;
+}
+
+.AC {
+    background-color: #d530e142;
+}
+
+.Lamp {
+    background-color: #30e165b3;
+}
+
+.refrigerator {
+    background-color: #efb42abd;
+}
+
+.fan {
+    background-color: #30a6e182;
+}
+/*end user device*/
+/*power cs*/
+.energy-cs{
+    position: absolute;
+    right: 450px;
+    top: 10px;
+    width: 200px;
+    height:300px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-left:25px;
+    border: solid;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.energy-nb{
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 40px;
+}
+.energy-cs h2,h1{
+    text-align: center;
+    margin-top: 10px;
+}
+.energy-cs h1{
+    margin-top: 40px;
+}
+/* end power cs*/
+.ktchart{
+    margin-top: 50px;
+}
